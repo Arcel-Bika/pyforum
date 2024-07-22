@@ -17,7 +17,7 @@ The goal of this project is to create a modern web forum application and, above 
 - Django
 - HTMX
 
-## 2. Documentation
+## 2. Documentation and tasks
 ### Models
 - [ ] User
 - [ ] Forum
