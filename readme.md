@@ -19,13 +19,13 @@ The goal of this project is to create a modern web forum application and, above 
 
 ## 2. Documentation and tasks
 ### Models
-- [ ] User
-- [ ] Forum
-- [ ] Role
-- [ ] LikeForum
-- [ ] LikeMessage
-- [ ] Category
-- [ ] Message
+- [x] User
+- [x] Forum
+- [x] Role
+- [x] LikeForum
+- [x] LikeMessage
+- [x] Category
+- [x] Message
 
 ### Views
 - [ ] Index
