@@ -91,4 +91,3 @@ class Subscribe(models.Model):
 
     def __str__(self):
         return f'{self.autor_sub} s\'est abonné(e) à {self.forum_sub}'
-
