@@ -39,6 +39,7 @@ class Role(models.Model):
 class Category(models.Model):
     name_category = models.CharField(max_length=100)
     description_category = models.TextField(max_length=1000)
+    slug_category = models.SlugField()
 
     def __str__(self):
         return f'Categorie : {self.name_category}'
@@ -50,6 +51,7 @@ class Forum(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     autor_forum = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    slug_forum = models.SlugField()
 
     def __str__(self):
         return f'Sujet : {self.subject}'
