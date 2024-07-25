@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-from create_user import MyUserManager
+from .create_user import MyUserManager
 
 
 class CustomUser(AbstractBaseUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    username = models.CharField(max_length=255, unique=True)
     city = models.CharField(max_length=50)
     password = models.CharField(max_length=128)
     email = models.EmailField(unique=True, max_length=200, blank=False)
@@ -15,7 +16,7 @@ class CustomUser(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'city', 'password']
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'city', 'password']
 
     objects = MyUserManager()
 
