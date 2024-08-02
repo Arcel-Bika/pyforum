@@ -28,6 +28,18 @@ The goal of this project is to create a modern web forum application and, above 
 - [x] Message
 
 ### Views
+- [x] Index
+- [x] Dashboard
+- [ ] Forums
+- [ ] About
+- [x] Login
+- [x] Signup
+- [ ] Forgot Password
+- [ ] Message
+- [ ] Member Views
+- [ ] Create Forum
+
+### Views UI
 - [ ] Index
 - [ ] Dashboard
 - [ ] Forums

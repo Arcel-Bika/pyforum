@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+        <p>{{ user }}</p>
+        <ul>
+            {% for forum in object_list %}
+                <li>{{ forum.subject }}: {{ forum.description }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

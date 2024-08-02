@@ -1,12 +1,12 @@
+from datetime import timezone
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from main.models import CustomUser
+from main.models import CustomUser, Category, Forum
 from django.views import View
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import get_user_model
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView, ListView
 
-# User = get_user_model
 User = CustomUser
 
 
@@ -46,7 +46,7 @@ class CustomLoginView(View):
     def post(self, request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
-            user = form.get_user()
+            user = CustomUser
             login(request, user)
             return redirect('home')
         return render(request, 'registration/login.html', {'form': form})
@@ -54,3 +54,16 @@ class CustomLoginView(View):
 
 class HomeView(TemplateView):
     template_name = 'home.html'
+
+
+class DashboardView(ListView):
+    model = Forum
+    template_name = 'dashboard.html'  # Spécifiez le template à utiliser
+    paginate_by = 100  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["user"] = CustomUser.objects.count()
+        return context
+
+
