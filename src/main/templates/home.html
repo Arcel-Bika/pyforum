@@ -11,37 +11,24 @@
         <title>PyForum</title>
     </head>
     <body>
-        <header>
-            <nav>
-                <div class="logo">
-                    <h1>Py<span>Forum</span></h1>
-                </div>
-                <div class="link">
-                    <ul>
-                        <li><a href="{% url 'home' %}">Accueil</a></li>
-                        <li><a href="{% url 'login' %}">Forums</a></li>
-                        <li><a href="">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="input-group">
-                    <label class="input-group__label" for="myInput">My Label</label>
-                    <input type="text" id="myInput" class="input-group__input" value="This is my input" />
-                  </div>
-                <div class="logo">
-                    {% if user.is_authenticated %}
-                        <a href="">Profil</a>
-                        <a href="{% url 'logout' %}"><h1>Se déconnecter</h1></a>
-                    {% else %}
-                            <a href="{% url 'login' %}"><h1>Se connecter</h1></a>
-                    {% endif %}
-                </div>
+        <header class="header">
+            <div class="logo">
+                <img src="{% static 'assets/logo' %}" alt="Logo Natalia">
+            </div>
+            <nav class="navigation_group">
+                <a href="{% url 'home' %}">Accueil</a>
+                <a href="{% url 'login' %}">Forums</a>
             </nav>
-
-            <div class="banner">
-                <h1>Bienvenue sur le PyForm</h1>
-                <h2>Créer des forums et discuter sur des sujets d'actuelités</h2>
+            <div class="profile_section">
+                {% if user.is_authenticated %}
+                    <img class="profile_img" src="{% static 'assets/natalia.jpg' %}" alt="Profil">
+                    <a class="sign_out" href="{% url 'logout' %}">Se déconnecter</a>
+                {% else %}
+                    <a class="login" href="{% url 'login' %}">Se connecter</a>
+                {% endif %}
             </div>
         </header>
+
 
         <main>
             <div>
@@ -50,62 +37,68 @@
 
             <section class="forum">
                 <div>
-                <h3 class="subject">Un sujet</h3>
-                <h3 class="author">Autheur</h3>
-            </div>
-            <div>
-                <p class="description">Description</p>
-            </div>
-            <div>
-                <input type="button" class="like" value="5">
-                <input type="button" class="message" value="24">
-            </div>
+                    <h3 class="subject">Un sujet</h3>
+                    <h3 class="author">Auteur</h3>
+                </div>
+                <div>
+                    <p class="description">Description</p>
+                </div>
+                <div>
+                    <input type="button" class="like" value="5">
+                    <input type="button" class="message" value="24">
+                </div>
             </section>
         </main>
 
-        <footer>
-            <div class="background">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 1600 900">
-                    <defs>
-                        <path id="wave" fill="rgba(162, 63, 93, 0.6)" d="M-363.852,502.589c0,0,236.988-41.997,505.475,0 s371.981,38.998,575.971,0s293.985-39.278,505.474,5.859s493.475,48.368,716.963-4.995v560.106H-363.852V502.589z"/>
-                    </defs>
-                    <g>
-                        <use xlink:href="#wave" opacity=".4">
-                            <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="8s" calcMode="spline" values="270 230; -334 180; 270 230" keyTimes="0; .5; 1" keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite"/>
-                        </use>
-                        <use xlink:href="#wave" opacity=".6">
-                            <animateTransform attributeName="transform" attributeType="XML" type="translate" dur="6s" calcMode="spline" values="-270 230;243 220;-270 230" keyTimes="0; .6; 1" keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0" repeatCount="indefinite"/>
-                        </use>
-                        <use xlink:href="#wave" opacty=".9">
-              <animateTransform
-                attributeName="transform"
-                attributeType="XML"
-                type="translate"
-                dur="4s"
-                calcMode="spline"
-                values="0 230;-140 200;0 230"
-                keyTimes="0; .4; 1"
-                keySplines="0.42, 0, 0.58, 1.0;0.42, 0, 0.58, 1.0"
-                repeatCount="indefinite"
-              />
-            </use>
-                    </g>
-                </svg>
+        <footer class="footer">
+            <div class="footer-wrapper">
+                <section class="footer-top">
+                    <div class="footer-headline">
+                        <h2>Abonnez-vous à notre newsletter</h2>
+                        <p>Avoir des annonces sur notre site</p>
+                    </div>
+                    <div class="footer-subscribe">
+                        <div>
+                            <input type="email" spellcheck="false" placeholder="Votre adresse mail">
+                            <button>Se connecter</button>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="footer-columns">
+                    <section>
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#" title="Support">Blog</a></li>
+                            <li><a href="#" title="Support">Support</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Equipe</h3>
+                        <ul>
+                            <li><a href="#" title="About Us">A propos de nous</a></li>
+                            <li><a href="#" title="Careers">Careers</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Réseaux</h3>
+                        <ul>
+                            <li><a href="#" title="Privacy Policy">Facebook</a></li>
+                            <li><a href="#" title="Terms of Service">Discord</a></li>
+                        </ul>
+                    </section>
+                </div>
             </div>
 
-            <section class="footer">
-                <ul class="socials">
-                    <li><a class="fa-brands fa-x-twitter"></a></li>
-                    <li><a class="fa-brands fa-linkdin"></a></li>
-                    <li><a class="fa-brands fa-github"></a></li>
-                </ul>
-                <ul class="links">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Forums</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-                <p class="legal">© 2024 Tous droits réservés</p>
-            </section>
+            <div class="footer-bottom">
+                <div class="footer-bottom-wrapper">
+                    <small>
+                        © Arcel Bika, Inc. <span id="year"></span>, All rights reserved
+                    </small>
+                </div>
+            </div>
         </footer>
+
+        <script src="{% static 'js/script.js' %}"></script>
     </body>
 </html>
