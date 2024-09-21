@@ -12,7 +12,7 @@
     </head>
     <body>
         <header>
-            <img class="logo" src="{% static 'assets/logo' %}" alt="logo">
+            <img class="logo" src="{% static 'images/logo.png' %}" alt="logo">
             <nav>
                 <ul class="nav__links">
                     <li><a href="{% url 'home' %}">Accueil</a></li>
@@ -27,9 +27,21 @@
                     <a class="sub" href="{% url 'login' %}">Se connecter</a>
                 {% endif %}
             </div>
-            
         </header>
 
+        <div class="banner" style="background-image: linear-gradient(rgba(9, 0, 77, 0.65), rgba(9, 0, 77, 0.65)), url('{% static 'images/backgroung.jpg' %}');">
+            <div class="banner__text">
+                <h1>Bienvenue dans l'espace idéal pour échanger <br>Et partager vos idées !</h1>
+                <p>Créez dès aujourd'hui votre forum de discussion <br>et restez au cœur de l'actualité en réunissant votre communauté.</p>
+                <div>
+                    {% if user.is_authenticated %}
+                        <a class="sub" href="{% url 'logout' %}">Se déconnecter</a>
+                    {% else %}
+                        <a class="sub" href="{% url 'login' %}">Se connecter</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
         <main>
             <div>
