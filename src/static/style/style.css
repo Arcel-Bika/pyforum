@@ -68,7 +68,7 @@ header {
     background-color: rgba(0, 136, 169, 1);
     border: none;
     border-radius: 50px;
-    cursor: pointer; 
+    cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 
@@ -179,6 +179,21 @@ li, a, button {
 
 .sign_out:hover, .login:hover {
     color: #0056b3;
+}
+
+.why {
+    padding: 20px;
+}
+
+.reasons {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+
+.reasons section {
+    width: 25%;
+    padding: 20px 50px;
 }
 
 
