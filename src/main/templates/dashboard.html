@@ -1,16 +1,105 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        <h1>Dashboard</h1>
-        <p>{{ user }}</p>
-        <ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <title>Tableau de bord</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+        }
+
+        .navbar-brand {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-gray);
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .welcome-message {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        /* Forum list styles */
+        .forum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .forum-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .forum-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .forum-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .forum-description {
+            color: var(--text-gray);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Tableau de bord</a>
+        <div class="navbar-links">
+            <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="welcome-message">Bienvenue, {{ user.user_name }}</h1>
+        <div class="forum-list">
             {% for forum in object_list %}
-                <li>{{ forum.subject }}: {{ forum.description }}</li>
+                <div class="forum-item">
+                    <h5 class="forum-title">{{ forum.subject }}</h5>
+                    <p class="forum-description">{{ forum.description }}</p>
+                </div>
             {% endfor %}
-        </ul>
-    </body>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
 </html>
