@@ -1,10 +1,125 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>PyForum</title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <title>Forums</title>
+    <style>
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary);
+            padding: 1rem 2rem;
+        }
 
-    </body>
-</html>
+        .navbar-brand {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--text-gray);
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            background-color: var(--body-bg);
+            color: var(--text-primary);
+        }
+
+        .welcome-message {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+
+        /* Forum list styles */
+        .forum-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .forum-card {
+            background-color: var(--secondary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .forum-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .forum-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .forum-card p {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        .forum-card a {
+            display: block;
+            margin-top: 1rem;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+
+        }
+
+        .forum-card a:hover {
+            color: var(--text-primary);
+        }
+    </style>
+
+</head>
+<body>
+    <header class="navbar">
+        <a href="{% url 'home' %}" class="navbar-brand">PyForum</a>
+        <nav class="navbar-links">
+            <a href="{% url 'home' %}" class="nav-link">Accueil</a>
+            <a href="{% url 'forums' %}" class="nav-link">Forums</a>
+            <a href="#" class="nav-link">A propos</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="welcome-message">Forums</h1>
+
+        <div class="forum-list">
+            {% for forum in forums %}
+                <div class="forum-card">
+                    <h2>{{ forum.subject }}</h2>
+                    <p>{{ forum.description }}</p>
+                    <a href="{% url 'forum' forum.slug %}">Voir les discussions</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>

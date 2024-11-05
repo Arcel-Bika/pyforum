@@ -73,3 +73,11 @@ class DashboardView(ListView):
 class ProfilView(View):
     template_name = 'profil/profil.html'
 
+
+class ForumView(View):
+    template_name = 'forums.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["forum"] = Forum.objects.all()
+        return context

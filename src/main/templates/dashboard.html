@@ -43,11 +43,13 @@
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
+            background-color: var(--body-bg);
+            color: var(--text-primary);
         }
 
         .welcome-message {
             font-size: 2rem;
-            color: var(--primary);
+            color: var(--text-primary);
             margin-bottom: 2rem;
         }
 
@@ -64,6 +66,7 @@
             border-radius: 0.5rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            color: var(--primary);
         }
 
         .forum-item:hover {
@@ -82,7 +85,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: var(--bg); color: var(--text-white);">
     <nav class="navbar">
         <a class="navbar-brand" href="#">Tableau de bord</a>
         <div class="navbar-links">
@@ -90,7 +93,28 @@
         </div>
     </nav>
     <div class="container">
-        <h1 class="welcome-message">Bienvenue, {{ user.user_name }}</h1>
+        <h1 class="welcome-message">Bienvenue, {{ user.first_name }}</h1>
+
+        <h1 class="welcome-message">Tableau de bord</h1>
+        <div class="forum-list">
+            <div class="forum-item">
+                <h2>Mes stats</h2>
+                <p>Mes forums créés: {{ forums_count }}</p>
+                <p>Mes messages postés: {{ messages_count }}</p>
+                <p>Mes points: {{ messages_count }}</p>
+            </div>
+            <div class="forum-item">
+                <h2>Utilisateurs</h2>
+                <p>Nombre d'utilisateurs inscrits: {{ users_count }}</p>
+            </div>
+            <div class="forum-item">
+                <h2>Statistiques</h2>
+                <p>Nombre de forums créés: {{ forums_count }}</p>
+                <p>Nombre de messages postés: {{ messages_count }}</p>
+            </div>
+        </div>
+
+        <h1 class="welcome-message">Forums</h1>
         <div class="forum-list">
             {% for forum in object_list %}
                 <div class="forum-item">
