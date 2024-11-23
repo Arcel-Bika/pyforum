@@ -66,7 +66,7 @@ class DashboardView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["user"] = CustomUser.objects.count()
+        context["user"] = CustomUser.objects.all()
         return context
 
 
@@ -79,5 +79,5 @@ class ForumView(View):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["forum"] = Forum.objects.all()
+        context["forums"] = Forum.objects.all()
         return context
